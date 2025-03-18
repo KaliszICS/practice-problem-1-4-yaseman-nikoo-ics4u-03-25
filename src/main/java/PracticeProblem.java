@@ -5,22 +5,24 @@ public class PracticeProblem {
 	public static void main(String args[]) {
 		
 	}
+
 	public static String getName(int Line, String file){
-		String name = "";
+		String name="";
 		Scanner s = null;
 		try{
+			
 			s = new Scanner(new BufferedReader(new FileReader(file)));
-			int c;
-		
-				for(int i=0; i<2;i++){
-					name = name + s.nextLine();
-				}
+		int counter = 1;
+		while (s.hasNext() && counter < Line){
+			s.nextLine();
+			counter++;
+		}
+
+			if (counter == Line && s.hasNext()){
+				name = s.next() + " " + s.next();
+
 
 			}
-			
-				
-
-			
 		}
 		catch(IOException e){
 			System.out.println(e);
@@ -31,15 +33,26 @@ public class PracticeProblem {
 			}
 		}
 		return name;
+		
 	}
+	
 	public static int getAge(int Line, String file){
-		int age = -1;
+		int age =-1;
 		Scanner s = null;
 		try{
+			
 			s = new Scanner(new BufferedReader(new FileReader(file)));
-			while(s.hasNext()){
-			age = s.nextInt();
-			}
+		int counter = 1;
+		while (s.hasNext() && counter < Line){
+			s.nextLine();
+			counter++;
+		}
+
+			if (counter == Line && s.hasNext()){
+				s.next();
+				s.next();
+				age = s.nextInt();
+			}	
 		}
 		catch(IOException e){
 			System.out.println(e);
@@ -50,24 +63,6 @@ public class PracticeProblem {
 			}
 		}
 		return age;
-	}
-	public static int getNumber(int Line, String file){
-		int number = -1;
-		Scanner s = null;
-		try{
-			s = new Scanner(new BufferedReader(new FileReader(file)));
-			while(s.hasNext()){
-			number = s.nextInt();
-			}
-		}
-		catch(IOException e){
-			System.out.println(e);
-		}
-		finally {
-			if (s != null) {
-				s.close();
-			}
-		}
-		return number;
+		
 	}
 }
